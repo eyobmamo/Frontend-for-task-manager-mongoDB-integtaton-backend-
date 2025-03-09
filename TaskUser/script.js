@@ -23,14 +23,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Fetch tasks from the backend
-        const response = await fetch('http://localhost:8081/tasks', {
+        const tasksAPI  = 'https://task-management-mongodb-integrat-production.up.railway.app/tasks';
+        const response = await fetch(tasksAPI, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
         });
         // Log the full response object
-        // console.log('Full response:', response);
+        console.log('Full response:', response);
         // Alert the response status
         // alert(`Response status: ${response.status}`);
 
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const result = await response.json();
         // Log the result object
-        // console.log('Result:', result);
+        console.log('Result:', result);
 
         if (response.ok) {
             renderTasks(result); // Render tasks directly from result
@@ -68,6 +69,7 @@ function renderTasks(tasks) {
 
     // Render each task
     tasks.forEach(task => {
+        console.log('Rendering task:', task); // Log each task being rendered
         const taskElement = document.createElement('div');
         taskElement.className = 'task-card';
         taskElement.innerHTML = `

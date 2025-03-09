@@ -19,7 +19,8 @@ document.getElementById('create-task-form').addEventListener('submit', async (ev
     try {
         // Send POST request to the backend API
         console.log('Sending POST request to backend API'); // Debugging step 2: Log before sending request
-        const response = await fetch('http://localhost:8081/tasks', {
+        const creatTaskAPI = 'https://task-management-mongodb-integrat-production.up.railway.app/tasks';
+        const response = await fetch(creatTaskAPI, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
