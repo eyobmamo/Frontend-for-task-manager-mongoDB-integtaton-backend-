@@ -36,7 +36,6 @@ signupFormElement.addEventListener('submit', async (event) => {
 
     // Prepare data for the API
     const userData = {
-
         email: email,
         password: password,
     };
@@ -47,11 +46,10 @@ signupFormElement.addEventListener('submit', async (event) => {
         const response = await fetch(REGISTER_ENDPOINT, {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData),
         });
-        // alert(JSON.stringify(userData));
 
         // Handle response
         const result = await response.json();
@@ -61,17 +59,14 @@ signupFormElement.addEventListener('submit', async (event) => {
         } else {
             alert(`Error: ${result.message || 'Registration failed'}`);
         }
-        
     } catch (error) {
         console.error('Error:', error);
         alert('An error occurred. Please try again.');
-        alert(`An error occurred: ${error.message}`);
     }
 });
 
 // Handle Login Form Submission
 const loginFormElement = document.getElementById('login-form');
-// alert('Login form element:', loginFormElement);
 loginFormElement.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent the form from submitting the traditional way
 
@@ -84,28 +79,20 @@ loginFormElement.addEventListener('submit', async (event) => {
         email: email,
         password: password,
     };
-    // alert(JSON.stringify(loginData));
-    // console.log('Login data:', loginData);
 
     try {
         // Send POST request to the backend login endpoint
-        const Log_IN_endPoint = "https://task-management-mongodb-integrat-production.up.railway.app/Register";
-        const response = await fetch(Log_IN_endPoint, {
+        const LOGIN_ENDPOINT = 'https://task-management-mongodb-integrat-production.up.railway.app/Login';
+        const response = await fetch(LOGIN_ENDPOINT, {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(loginData),
         });
-        // console.log('Login data sent:', loginData);
 
         // Handle response
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-        }
         const result = await response.json();
-        // console.log('Login response received:', result);
         if (response.ok) {
             // Save the JWT token in localStorage
             localStorage.setItem('token', result.token);
@@ -119,7 +106,6 @@ loginFormElement.addEventListener('submit', async (event) => {
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('incorrect email or password');
+        alert('An error occurred. Please try again.');
     }
 });
-
