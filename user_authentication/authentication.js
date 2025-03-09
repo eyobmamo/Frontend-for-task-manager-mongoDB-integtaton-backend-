@@ -43,10 +43,11 @@ signupFormElement.addEventListener('submit', async (event) => {
 
     try {
         // Send POST request to the backend API
-        const response = await fetch('http://localhost:8081/Register', {
+        const REGISTER_ENDPOINT = 'https://task-management-mongodb-integrat-production.up.railway.app/Register';
+        const response = await fetch(REGISTER_ENDPOINT, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
             },
             body: JSON.stringify(userData),
         });
@@ -88,7 +89,8 @@ loginFormElement.addEventListener('submit', async (event) => {
 
     try {
         // Send POST request to the backend login endpoint
-        const response = await fetch('http://localhost:8081/Login', {
+        const Log_IN_endPoint = "https://task-management-mongodb-integrat-production.up.railway.app/Register";
+        const response = await fetch(Log_IN_endPoint, {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
