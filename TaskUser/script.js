@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Check if the user is logged in
     if (!token) {
-        window.location.href = '../user_authentication/signUP_signIN.html'; // Redirect to login page
+        window.location.href = '../index.html'; // Redirect to login page
         return;
     }
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const logoutBtn = document.getElementById('logout-btn');
     logoutBtn.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.href = '../user_authentication/signUP_signIN.html';
+        window.location.href = '../index.html';
     });
 
     // Create Task button
